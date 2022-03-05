@@ -1,21 +1,20 @@
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.pagefactory.AndroidBy;
+package com.thomson.appiumtest.page
 
-public class LoginPage extends BasePage {
+import com.thomson.appiumtest.base.BasePage
+import io.appium.java_client.AppiumDriver
+import io.appium.java_client.MobileElement
+import io.appium.java_client.pagefactory.AndroidBy
 
-    public LoginPage(AppiumDriver<MobileElement> driver) {
-        super(driver);
-    }
+class LoginPage(driver: AppiumDriver<MobileElement>) : BasePage(driver) {
 
     @AndroidBy(id = "registerFirst")
-    public MobileElement registerFirst;
+    lateinit var registerFirst: MobileElement
 
-    public void clickOnLogin() {
-        registerFirst.click();
+    fun clickOnLogin() {
+        registerFirst.click()
     }
 
-    public boolean validateLoginShowed() {
-        return registerFirst.isDisplayed();
+    fun validateLoginShowed(): Boolean {
+        return registerFirst.isDisplayed
     }
 }

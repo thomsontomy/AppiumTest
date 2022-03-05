@@ -1,51 +1,52 @@
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-import io.cucumber.java.Before;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import org.junit.After;
+package com.thomson.appiumtest.stepdefenitions
 
-public class LoginFeatureStepDefinitions {
+import com.thomson.appiumtest.AppiumApplication
+import com.thomson.appiumtest.page.LoginPage
+import io.appium.java_client.AppiumDriver
+import io.appium.java_client.MobileElement
+import io.cucumber.java.Before
+import io.cucumber.java.en.And
+import io.cucumber.java.en.Given
+import io.cucumber.java.en.Then
+import io.cucumber.java.en.When
+import org.junit.After
 
-    private AppiumApplication application = new AppiumApplication();
-    private LoginPage loginPage;
+class LoginFeatureStepDefinitions {
 
+    private val application = AppiumApplication()
+    private lateinit var loginPage: LoginPage
 
     @Before
-    public void setup() {
-        application.initialiseAppium();
-        loginPage = new LoginPage((AppiumDriver<MobileElement>) application.getDriver());
+    fun setup() {
+        application.initialiseAppium()
+        @Suppress("UNCHECKED_CAST")
+        loginPage = LoginPage(application.driver as AppiumDriver<MobileElement>)
     }
 
     @After
-    public void tearDown() {
-        application.shutDown();
+    fun tearDown() {
+        application.shutDown()
     }
 
     @Given("The login screen is shown")
-    public void givenLoginScreenShown() {
-        loginPage.validateLoginShowed();
+    fun givenLoginScreenShown() {
+        loginPage.validateLoginShowed()
     }
 
     @When("The user enters username {string}")
-    public void whenUserEntersUsername(String userName) {
-        loginPage.clickOnLogin();
+    fun whenUserEntersUsername(userName: String) {
+        loginPage.clickOnLogin()
     }
 
     @And("The user enters password {string}")
-    public void andUserEntersPassword(String password) {
-
+    fun andUserEntersPassword(password: String) {
     }
 
     @And("The user clicks login button")
-    public void andUserClicksLoginButton() {
-
+    fun andUserClicksLoginButton() {
     }
 
     @Then("The invalid username or password message should be showed")
-    public void thenInvalidUsernameShouldBeShowed() {
-
+    fun thenInvalidUsernameShouldBeShowed() {
     }
 }

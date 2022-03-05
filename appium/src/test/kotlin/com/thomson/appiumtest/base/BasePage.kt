@@ -1,14 +1,12 @@
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import org.openqa.selenium.support.PageFactory;
+package com.thomson.appiumtest.base
 
-public class BasePage {
+import io.appium.java_client.AppiumDriver
+import io.appium.java_client.MobileElement
+import org.openqa.selenium.support.PageFactory
+import io.appium.java_client.pagefactory.AppiumFieldDecorator
 
-    protected AppiumDriver<MobileElement> driver;
-
-    public BasePage(AppiumDriver<MobileElement> driver) {
-        this.driver = driver;
-        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+open class BasePage(driver: AppiumDriver<MobileElement>) {
+    init {
+        PageFactory.initElements(AppiumFieldDecorator(driver), this)
     }
 }
