@@ -7,14 +7,23 @@ import io.appium.java_client.pagefactory.AndroidBy
 
 class LoginPage(driver: AppiumDriver<MobileElement>) : BasePage(driver) {
 
-    @AndroidBy(id = "registerFirst")
-    lateinit var registerFirst: MobileElement
+    @AndroidBy(tagName = "title")
+    lateinit var title: MobileElement
+
+    @AndroidBy(tagName = "username")
+    lateinit var userName: MobileElement
+
+    @AndroidBy(tagName = "password")
+    lateinit var password: MobileElement
+
+    @AndroidBy(tagName = "loginButton")
+    lateinit var loginButton: MobileElement
 
     fun clickOnLogin() {
-        registerFirst.click()
+        loginButton.click()
     }
 
     fun validateLoginShowed(): Boolean {
-        return registerFirst.isDisplayed
+        return title.isDisplayed && userName.isDisplayed && password.isDisplayed && loginButton.isDisplayed
     }
 }

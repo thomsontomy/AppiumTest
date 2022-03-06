@@ -19,9 +19,10 @@ class AppiumApplication {
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android")
         capabilities.setCapability(
             MobileCapabilityType.APP,
-            "/Users/thomson/projects/PushNotification/app/build/intermediates/apk/debug/app-debug.apk"
+            "../android_app/app/build/intermediates/apk/debug/app-debug.apk"
         )
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554")
+        capabilities.setCapability("automationName", "espresso")
         try {
             Companion.driver = AppiumDriver<AndroidElement>(URL("http://0.0.0.0:4723/wd/hub"), capabilities)
         } catch (e: MalformedURLException) {

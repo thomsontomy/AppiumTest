@@ -10,6 +10,7 @@ import io.cucumber.java.en.Given
 import io.cucumber.java.en.Then
 import io.cucumber.java.en.When
 import org.junit.After
+import org.junit.jupiter.api.fail
 
 class LoginFeatureStepDefinitions {
 
@@ -30,7 +31,9 @@ class LoginFeatureStepDefinitions {
 
     @Given("The login screen is shown")
     fun givenLoginScreenShown() {
-        loginPage.validateLoginShowed()
+        if (!loginPage.validateLoginShowed()) {
+            fail { "Login page is not showed with required elements" }
+        }
     }
 
     @When("The user enters username {string}")
