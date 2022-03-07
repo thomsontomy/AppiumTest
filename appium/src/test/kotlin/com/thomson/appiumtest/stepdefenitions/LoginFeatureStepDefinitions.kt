@@ -30,26 +30,38 @@ class LoginFeatureStepDefinitions {
     }
 
     @Given("The login screen is shown")
-    fun givenLoginScreenShown() {
+    fun `the login screen is shown`() {
         if (!loginPage.validateLoginShowed()) {
             fail { "Login page is not showed with required elements" }
         }
     }
 
     @When("The user enters username {string}")
-    fun whenUserEntersUsername(userName: String) {
-        loginPage.clickOnLogin()
+    fun `the user enters username`(userName: String) {
+        loginPage.enterUsername(userName)
     }
 
     @And("The user enters password {string}")
-    fun andUserEntersPassword(password: String) {
+    fun `the user enters password`(password: String) {
+        loginPage.enterPassword(password)
     }
 
     @And("The user clicks login button")
-    fun andUserClicksLoginButton() {
+    fun `the user clicks login button`() {
+        loginPage.clickOnLogin()
     }
 
     @Then("The invalid username or password message should be showed")
-    fun thenInvalidUsernameShouldBeShowed() {
+    fun `the invalid username or password message should be showed`() {
+        if (!loginPage.validateInvalidLogin()) {
+            fail { "Invalid login not showed" }
+        }
+    }
+
+    @Then("The login success message should be showed")
+    fun `the login success message should be showed`() {
+        if (!loginPage.validateLoginSuccess()) {
+            fail { "Login success not showed" }
+        }
     }
 }
