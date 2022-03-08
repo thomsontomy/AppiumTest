@@ -1,12 +1,12 @@
 package com.thomson.appiumtest
 
-import org.junit.runner.RunWith
-import io.cucumber.junit.Cucumber
 import io.cucumber.junit.CucumberOptions
+import net.serenitybdd.cucumber.CucumberWithSerenity
+import org.junit.runner.RunWith
 
-@RunWith(Cucumber::class)
+@RunWith(CucumberWithSerenity::class)
 @CucumberOptions(
-    plugin = ["pretty", "html:target/cucumber-report.html"],
+    glue= ["StepDefinitions"],
     features = ["src/test/resources"]
 )
 class CucumberTest
