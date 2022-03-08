@@ -27,11 +27,15 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
         LoginView(onLogin = { userName, password ->
             loginViewModel.login(userName, password)
         })
-        when (loginState.value) {
-            LoginState.Success -> Text(text = "Login Success")
-            is LoginState.Failed -> Text(text = (loginState.value as LoginState.Failed).message)
-            LoginState.Unknown -> Text(text = "Unauthenticated")
+        val authMessage = when (loginState.value) {
+            LoginState.Success -> "Login Success"
+            is LoginState.Failed -> (loginState.value as LoginState.Failed).message
+            LoginState.Unknown -> "Unauthenticated"
         }
+        Text(
+            modifier = Modifier.testTag("authResult"),
+            text = authMessage
+        )
     }
 }
 
