@@ -37,7 +37,7 @@ lateinit var title: WebElement
 ## Espresso driver with compose 
 In order to make the Espresso driver to detect compose view elements, the driver settings need to be updated(https://github.com/appium/appium-espresso-driver/blob/master/README.md#settings-api)
 ```kotlin
-setSetting("driver", "compose")
+appiumDriver.setSetting("driver", "compose")
 ```
 ## Appium inspector
 Appium inspector can't detect the compose view elements by default.
