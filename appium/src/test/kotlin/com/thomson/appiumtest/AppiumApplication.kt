@@ -4,7 +4,6 @@ import io.appium.java_client.AppiumDriver
 import io.appium.java_client.remote.AutomationName
 import io.appium.java_client.remote.MobileCapabilityType
 import org.openqa.selenium.WebDriver
-import org.openqa.selenium.WebElement
 import org.openqa.selenium.remote.DesiredCapabilities
 import java.io.File
 import java.net.MalformedURLException
@@ -41,7 +40,7 @@ class AppiumApplication {
         """.trimIndent()
         capabilities.setCapability("espressoBuildConfig", espressoBuildConfig)
         try {
-            Companion.driver = AppiumDriver<WebElement>(URL("http://0.0.0.0:4723/wd/hub"), capabilities).apply {
+            Companion.driver = AppiumDriver(URL("http://0.0.0.0:4723/wd/hub"), capabilities).apply {
                 setSetting("driver", "compose")
             }
         } catch (e: MalformedURLException) {

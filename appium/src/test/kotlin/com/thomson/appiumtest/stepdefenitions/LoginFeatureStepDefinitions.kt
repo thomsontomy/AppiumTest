@@ -3,7 +3,6 @@ package com.thomson.appiumtest.stepdefenitions
 import com.thomson.appiumtest.AppiumApplication
 import com.thomson.appiumtest.page.LoginPage
 import io.appium.java_client.AppiumDriver
-import io.appium.java_client.MobileElement
 import io.cucumber.java.Before
 import io.cucumber.java.en.And
 import io.cucumber.java.en.Given
@@ -21,7 +20,7 @@ class LoginFeatureStepDefinitions {
     fun setup() {
         application.initialiseAppium()
         @Suppress("UNCHECKED_CAST")
-        loginPage = LoginPage(application.driver as AppiumDriver<MobileElement>)
+        loginPage = LoginPage(application.driver as AppiumDriver)
     }
 
     @After
