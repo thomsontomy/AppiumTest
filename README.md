@@ -17,6 +17,23 @@ Tested with appium version 1.23.0-beta.0
 ## Android App
 <img src="screenshots/android_app.png" alt="Android app" width="250"/>
 
+## Compose views and testTags
+Compose views need to add a special `testTag` [Modifier](https://developer.android.com/reference/kotlin/androidx/compose/ui/platform/package-summary#(androidx.compose.ui.Modifier).testTag(kotlin.String)) for Appium driver to detect the compose nodes.
+```kotlin
+Text(
+    modifier = Modifier
+        .padding(4.dp)
+        .testTag("title"),
+    text = "App Login",
+    fontSize = 24.sp
+)
+``` 
+With this Appium compose driver can detect the compose node
+```kotlin
+@AndroidFindBy(tagName = "title")
+lateinit var title: WebElement
+```
+
 ## Espresso driver with compose 
 In order to make the Espresso driver to detect compose view elements, the driver settings need to be updated(https://github.com/appium/appium-espresso-driver/blob/master/README.md#settings-api)
 ```kotlin
